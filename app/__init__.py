@@ -1,7 +1,7 @@
 from flask import Flask, session
 from config import Config
 from flask_login import LoginManager
-from flask.ext.session import Session
+from flask_session import Session
 
 app = Flask(__name__)
 SESSION_TYPE = 'redis'
