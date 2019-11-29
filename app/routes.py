@@ -1,5 +1,6 @@
 from flask import render_template
 from app import app
+from app.forms import LoginForm
 
 from santa import test
 from santa import users_db_functions as userdb
@@ -20,7 +21,8 @@ def index():
 #login page
 @app.route("/login")
 def login():
-    return "login page"
+    form = LoginForm()
+	return render_template('login.html', title='Sign In', form=form)
 
 
 #if run from cmd line, run flask with external host
