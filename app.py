@@ -3,7 +3,7 @@ from flask import render_template
 
 #import scripts folder
 import sys
-sys.path.append('~/cunning-xmas-site')
+sys.path.append('/home/pi/cunning-xmas-site/')
 
 import test
 
@@ -12,7 +12,7 @@ app = Flask(__name__)
 #main landing page
 @app.route("/")
 def index():
-	user = {'username': 'Christos'}
+	user = {'username': test.test()}
 	
 	slist = {
 		"Christos": "Dimitri",
