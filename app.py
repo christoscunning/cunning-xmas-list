@@ -5,7 +5,7 @@ from flask import render_template
 import sys
 sys.path.append('/home/pi/cunning-xmas-site/')
 
-import test
+from santa import test
 
 app = Flask(__name__)
 
