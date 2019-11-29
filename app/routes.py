@@ -23,19 +23,23 @@ def index():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-	#get data from form if valid
+    #get data from form if valid
         d_username = form.username.data
-	d_password = form.password.data
-	d_remember_me = form.remember_me.data
-	# get user hashed_password from database using username
-	stored_hashed_password = userdb.findUserByUsername(d_username)[1]
-	#verify user log-in using auth module
-	if auth.verify_password(stored_hashed_password, d_password):
-	    flash('Login succesful for user {}, remember_me={}'.format(d_username, d_remember_me))
-	    return redirect(url_for('index'))
-	else:
-	    flash('Login failed. invalid password or username')
-	    return redirect(url_for('login'))
+    d_password = form.password.data
+    d_remember_me = form.remember_me.data
+    # get user hashed_password from database using username
+    stored_hashed_password = userdb.findUserByUsername(d_username)[1]
+    if stored_hashed_password == 1:
+        flash('Login failed. invalid password or username')
+        return redirect(url_for('login'))
+    
+    #verify user log-in using auth module
+    if auth.verify_password(stored_hashed_password, d_password):
+        flash('Login succesful for user {}, remember_me={}'.format(d_username, d_remember_me))
+        return redirect(url_for('index'))
+    else:
+        flash('Login failed. invalid password or username')
+        return redirect(url_for('login'))
 
     return render_template('login.html', title='Sign In', form=form)
 
