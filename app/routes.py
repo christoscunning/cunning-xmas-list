@@ -38,9 +38,9 @@ def login():
             #success, redirect to home page
             flash('Login succesful for user {}, remember_me={}'.format(d_username, d_remember_me))
             return redirect(url_for('index'))
-    else:
-        flash('Login failed. invalid password or username')
-        return redirect(url_for('login'))
+        else:
+            flash('Login failed. invalid password or username')
+            return redirect(url_for('login'))
 
     return render_template('login.html', title='Sign In', form=form)
 
