@@ -29,7 +29,7 @@ def login():
 		
 		flash('Login requested for user {}, remember_me={}'.format(
 		    d_username, d_remember_me))
-        return redirect('/index')
+        return redirect('/')
 
     return render_template('login.html', title='Sign In', form=form)
 
