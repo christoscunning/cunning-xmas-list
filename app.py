@@ -5,7 +5,8 @@ app = Flask(__name__)
 #main landing page
 @app.route("/")
 def index():
-	return "Hello world, this is a flask site!"
+	user = {'username': 'Christos'}
+	return render_template('index.html', title='Home', year='2020', user=user)
 
 
 #login page
