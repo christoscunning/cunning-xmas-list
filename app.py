@@ -1,6 +1,12 @@
 from flask import Flask
 from flask import render_template
 
+#import scripts folder
+import sys
+sys.path.append('~/cunning-xmas-site')
+
+import test
+
 app = Flask(__name__)
 
 #main landing page
@@ -25,5 +31,6 @@ def login():
 
 # if run from command line, run flask with external host
 if __name__ == "__main__":
+	print("test")
 	app.run(debug=True, host='0.0.0.0')
 

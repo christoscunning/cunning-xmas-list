@@ -6,9 +6,9 @@ import create_user_db as createdb
 #createdb.createDatabase()
 #santadb.loadNamesFromCSV("names.txt")
 #userdb.printDB()
-shuffle = xl.xmasShuffle(3)
-shuffle.printList()
-
+#shuffle = xl.xmasShuffle(3)
+#shuffle.printList()
+print("test success!")
 """
 dict = shuffle.toDictionary()
 
