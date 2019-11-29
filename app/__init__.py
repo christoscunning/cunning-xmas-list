@@ -1,6 +1,6 @@
 from flask import Flask, session
 from config import Config
-from flask_login import LoginManager
+#from flask_login import LoginManager
 #from flask_session import Session
 
 app = Flask(__name__)
@@ -10,7 +10,7 @@ app = Flask(__name__)
 #just set secret key 
 app.secret_key = b'secret-santa-key'
 
-login = LoginManager(app)
+#login = LoginManager(app)
 #session = Session(app)
 
 from app import routes
