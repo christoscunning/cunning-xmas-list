@@ -51,6 +51,13 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 
+#logout
+@app.route('/logout')
+def logout():
+    # remove the user_id from the if its there
+    session.pop('user_id', None)
+    return redirect(url_for('index'))
+
 #if run from cmd line, run flask with external host
 if __name__ == "__main__":
     print("poop")
