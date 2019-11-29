@@ -1,3 +1,5 @@
 /flask/
 
 *.pyc
+*.db
+*.py.swp
