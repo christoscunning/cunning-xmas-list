@@ -19,10 +19,10 @@ def index():
     return render_template('index.html', title='Home', user=user, slist = slist)
 
 #login page
-@app.route("/login")
+@app.route('/login')
 def login():
     form = LoginForm()
-	return render_template('login.html', title='Sign In', form=form)
+    return render_template('login.html', title='Sign In', form=form)
 
 
 #if run from cmd line, run flask with external host
