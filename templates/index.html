@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>{{ title }} - Cunning Xmas - {{ year }}</title>
+        <title>{{ title }} - Cunning Xmas - 2019</title>
     </head>
     <body>
 		{% if user %}
@@ -9,5 +9,10 @@
 		<h1>Welcome to the cunning secret santa system.</h1>
 		<p>Log in below</p>
 		{% endif %}
+		
+		{% for santa in slist %}
+		<div><p>{{ santa }} is buying for: <b>{{ slist[santa] }}</b></p></div>
+		{% endfor %}
+		
     </body>
 </html>
