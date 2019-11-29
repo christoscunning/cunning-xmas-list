@@ -2,17 +2,19 @@ from flask import render_template
 from app import app
 
 from santa import test
+from santa import users_db_functions as userdb
+from santa import auth
+from santa import xmaslist
 
 #main landing page
 @app.route("/")
 def index():
     user = {'username': test.test()}
 
-    slist = {
-	"Chris": "Dim",
-        "Dim": "Yan",
-        "Yan": "Chris"
-    }
+    #slist.append("Name":"GivingTo")
+    masterlist = xmaslist.xmasShuffle(0)
+    slist = masterlist.toDictionary()
+
     return render_template('index.html', title='Home', user=user, slist = slist)
 
 #login page
