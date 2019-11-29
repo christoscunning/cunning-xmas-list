@@ -10,7 +10,10 @@ from santa import xmaslist
 #main landing page
 @app.route("/")
 def index():
-    user = {'username': test.test()}
+    username = None
+    if 'user_id' in session:
+        username = userdb.findUserByID(session['user_id'])[2]
+    user = {'username': username}
 
     #slist.append("Name":"GivingTo")
     masterlist = xmaslist.xmasShuffle(0)
@@ -38,6 +41,8 @@ def login():
         if auth.verify_password(stored_hashed_password, d_password):
             #success, redirect to home page
             flash('Login succesful for user {}, remember_me={}'.format(d_username, d_remember_me))
+            #set current user
+            session['user_id'] = userdb.findUserByUsername(d_username)[0]
             return redirect(url_for('index'))
         else:
             flash('Login failed. invalid password or username')
