@@ -7,6 +7,6 @@ app = Flask(__name__)
 SESSION_TYPE = 'redis'
 app.config.from_object(Config)
 login = LoginManager(app)
-Session(app)
+session = Session(app)
 
 from app import routes
