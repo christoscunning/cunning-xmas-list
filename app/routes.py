@@ -27,11 +27,12 @@ def login():
         d_username = form.username.data
         d_password = form.password.data
         d_remember_me = form.remember_me.data
-        # get user hashed_password from database using username
-        stored_hashed_password = userdb.findUserByUsername(d_username)[1]
-        if stored_hashed_password == 1:
+        #check if user exists in database
+        if userdb.findUserByUsername(d_username) == 1:
             flash('Login failed. invalid password or username')
             return redirect(url_for('login'))
+        # get user hashed_password from database using username
+        stored_hashed_password = userdb.findUserByUsername(d_username)[1]
     
         #verify user log-in using auth module
         if auth.verify_password(stored_hashed_password, d_password):
