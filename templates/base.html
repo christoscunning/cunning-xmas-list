@@ -1,0 +1,18 @@
+<html>
+	<head>
+	{% if title %}
+		<title>{{ title }} - Cunning Xmas - 2019</title
+		{% else %}
+		<title>Welcome to the Cunning Xmas 2019 Website!</title>
+		{% endif %}
+	<head>
+	
+	<body>
+		<div>Cunning Secret Santa: <a href="/login">Login</a></div>
+		<hr>
+		
+		<!-- insert page content here -->
+		{% block content %}{% endblock %}
+	
+	</body>
+</html>
