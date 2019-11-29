@@ -6,12 +6,12 @@ import create_user_db as createdb
 #full path
 filename = '/home/pi/cunning-xmas-site/santa/names.txt'
 
-createdb.createDatabase()
-santadb.loadNamesFromCSV(filename)
-userdb.printDB()
-#shuffle = xl.xmasShuffle(3)
-#shuffle.printList()
-#print("test success!")
+#createdb.createDatabase()
+#santadb.loadNamesFromCSV(filename)
+#userdb.printDB()
+shuffle = xl.xmasShuffle(3)
+shuffle.printList()
+print("test success!")
 """
 dict = shuffle.toDictionary()
 

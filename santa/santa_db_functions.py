@@ -41,7 +41,7 @@ def loadNamesFromCSV(filename):
 		line_count = 0
 		for row in csv_reader:
 			if line_count == 0:
-				print("first row")
+				print("first row.......")
 				line_count += 1
 			else:
 				#get name and family_id
