@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
 	user = {'username': 'Christos'}
-	return render_template('index.html', title='Home', year='2020', user=user)
+	return render_template('index.html', title='Home', year='2019')
 
 
 #login page

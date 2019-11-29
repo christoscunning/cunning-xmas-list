@@ -3,6 +3,11 @@
         <title>{{ title }} - Cunning Xmas - {{ year }}</title>
     </head>
     <body>
+		{% if user %}
         <h1>Hello, {{ user.username }}!</h1>
+		{% else %}
+		<h1>Welcome to the cunning secret santa system.</h1>
+		<p>Log in below</p>
+		{% endif %}
     </body>
 </html>
