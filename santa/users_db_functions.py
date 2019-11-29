@@ -55,7 +55,7 @@ def updateNameByUserID(newUserame, userID):
 
 #finds a user by username
 # returns a list of the info of the user
-# row[0] is the user_id, row[1] is the username, row[2] is the family_id
+# row[0] is the user_id, row[1] is hashed_password, row[2] is the username, row[3] is the family_id
 def findUserByUsername(s_username):
 	conn = sql.connect(DB_NAME)
 	cursor = conn.cursor()
@@ -64,7 +64,7 @@ def findUserByUsername(s_username):
 	#row = cursor.fetchone()[0]
 	returnRow = []
 	
-	for row in cursor.execute("SELECT user_id,pw_hash username, family_id FROM users WHERE username = ?", (s_username,)):
+	for row in cursor.execute("SELECT user_id, pw_hash, username, family_id FROM users WHERE username = ?", (s_username,)):
 		returnRow = row
 	
 	
