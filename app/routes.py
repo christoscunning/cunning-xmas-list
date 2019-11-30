@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, session
 from app import app
 from app.forms import LoginForm
 
-from santa import test
+from santa import test #to run db creation and csv loading
 from santa import users_db_functions as userdb
 from santa import auth
 from santa import xmaslist
@@ -58,7 +58,3 @@ def logout():
     session.pop('user_id', None)
     return redirect(url_for('index'))
 
-#if run from cmd line, run flask with external host
-if __name__ == "__main__":
-    print("poop")
-    app.run(debug=True, host='0.0.0.0')

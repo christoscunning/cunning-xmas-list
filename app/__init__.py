@@ -14,3 +14,7 @@ app.secret_key = b'secret-santa-key'
 #session = Session(app)
 
 from app import routes
+
+if __name__ == "__main___":
+    print("poop")
+    app.run(host='0.0.0.0')
