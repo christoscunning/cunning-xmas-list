@@ -16,7 +16,7 @@ def index():
     user = {'username': username}
 
     #slist.append("Name":"GivingTo")
-    masterlist = xmaslist.xmasShuffle(0)
+    masterlist = xmaslist.xmasShuffle(46)
     slist = masterlist.toDictionary()
 
     return render_template('index.html', title='Home', user=user, slist = slist)
