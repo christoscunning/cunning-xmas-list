@@ -1,5 +1,8 @@
 /flask/
 
+
 *.pyc
 *.db
 *.py.swp
+
+secret.txt

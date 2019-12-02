@@ -119,6 +119,7 @@ class SantaList:
 def xmasShuffle(seed = 0):
 	random.seed(seed)
 	
+	
 	#get names from database
 	DB_NAMES_LIST = santadb.getNames()
 
@@ -134,18 +135,21 @@ def xmasShuffle(seed = 0):
 	'''
 	#####Preset Names
 	
-	cunningNames1 = ["Coral","Perry","Keegan","Shawna","Kohen","Farley","Sasha","Joey","Keiran","Stephanie",
-	"Keanna","Marianne"]
-	cunningNames2 = ["Diann","Hugh","Sean","Tessa","Rybn","Lucas","Camilla","Mike","Baby Milo","Callum",
-	"Jess"]
+	cunningNames1 = ["Coral","Perry","Keegan","Shawna","Kohen","Farley","Sasha","Joey","Keiran","Stephanie","Keanna","Marianne"]
+	cunningNames2 = ["Diann","Hugh","Sean","Tessa","Rylan","Camilla","Mike","Lucas","Callum","Jess"]
 	cunningNames3 = ["Len"]
 	cunningNames4 = ["Sylvia","Craig"]
 	cunningNames5 = ["Efrosini","John","Dimitri","Christos","Yiannis"]
 	totalNumPeople = len(cunningNames1) + len(cunningNames2) + len(cunningNames3) + len(cunningNames4) + len(cunningNames5)
-	print(totalNumPeople)
+	#print(totalNumPeople)
 	'''
+	
 	#Main
 
+	#num families!!
+	num_fams = 5
+
+	#manual
 	# create lists
 	cunning1 = []
 	cunning2 = []
@@ -181,18 +185,22 @@ def xmasShuffle(seed = 0):
 		cunning5.append(newSanta)
 
 	cunningLists = [cunning1[:],cunning2[:],cunning3[:],cunning4[:],cunning5[:]]
-
+	
 	# create linked list for santa 
 	MasterList = SantaList()
 
 	#get rand family
-	randFamily = random.randint(0,4)
+	randFamily = random.randint(0,(len(cunningLists) - 1))
 	randFamily2 = randFamily
 	while randFamily2 == randFamily:
-		randFamily2 = random.randint(0,4)
-
-	randPerson = random.randint(0,len(cunningLists[randFamily]))
-
+		randFamily2 = random.randint(0,(len(cunningLists) - 1))
+	
+	# we set random person to 0 by default, and if the family has more than
+	# one person left, it will asign it a random number
+	randPerson = 0
+	if len(cunningLists[randFamily]) > 1:
+		randPerson = random.randint(0,len(cunningLists[randFamily])-1)
+	
 	#now create first santa
 	firstSanta = cunningLists[randFamily][randPerson]
 	#this does next
@@ -201,19 +209,29 @@ def xmasShuffle(seed = 0):
 
 	#just .remove() them instead???
 	removeOneName = cunningLists[randFamily][randPerson]
-	
+	#print("important", cunningLists[2])
 	cunningLists[randFamily].remove(removeOneName)
+
+	#forgot i need this here too
+	#if list is empty, delete it
+	if len(cunningLists[randFamily]) == 0:
+		#print("note if in here",randFamily)
+		cunningLists.remove(cunningLists[randFamily])
+		'''
+		newCunningLists = []
+		for i in range(0,(len(cunningLists) - 1)):
+			if cunningLists[randFamily] != []:
+				newCunningLists.append(cunningLists[randFamily])
+		cunningLists = newCunningLists
+		'''
 
 	while (MasterList.getSize() < totalNumPeople):
 		
-		emptyCount = 0
-		for santaList in cunningLists[:]:
-			if santaList == None:
-				emptyCount += 1
-		# if all but one family is empty, then we exit the loop
-		if emptyCount == 4:
-			#print("Only one family left")
+		#if onyl one left, we break loop
+		if len(cunningLists) < 2:
+			#print("here")
 			break
+		
 		
 		#get new rand family but cant be same as current
 		currentFamily = currentSanta.iden.family - 1
@@ -222,9 +240,27 @@ def xmasShuffle(seed = 0):
 		
 		# go until we find a family that is different and not empty
 		while (newFamily == currentFamily) or (cunningLists[newFamily] == None):
-			newFamily = random.randint(0,4)
-		#get index, get new person
-		newPersonIndex = random.randint(0,len(cunningLists[newFamily])-1)
+			newFamily = random.randint(0,(len(cunningLists) - 1))
+		
+		newPersonIndex = 0
+		# if list has more than one, than randomize
+		if len(cunningLists[newFamily]) > 1:
+			#get index, get new person
+			newPersonIndex = random.randint(0,len(cunningLists[newFamily])-1)
+		
+		#print(newFamily, " : ", newPersonIndex)
+		#print(cunningLists[newFamily][newPersonIndex])
+		
+		count = 0
+		for list in cunningLists:
+			count += 1
+			#print(count) 
+			for name in list:
+				#print(name.iden.name)
+				nothing = 3
+		
+		#print(newFamily, " : ", newPersonIndex, "!!!")
+		#print(cunningLists[newFamily])
 		newPerson = cunningLists[newFamily][newPersonIndex].iden #.iden is the person of santa
 		
 		
@@ -241,15 +277,31 @@ def xmasShuffle(seed = 0):
 		cunningLists[newFamily].remove(removePerson)
 		
 		
+		#if list is empty, delete it
+		if not cunningLists[newFamily]:
+			#print("note if in here",newFamily)
+			cunningLists.remove(cunningLists[newFamily])
+			'''
+			newCunningLists = []
+			for i in range(0,(len(cunningLists) - 1)):
+				if cunningLists[newFamily] != []:
+					newCunningLists.append(cunningLists[newFamily])
+			cunningLists = newCunningLists.deepcopy()
+			'''
+		
+		
+		"""
+		for list in cunningLists:
+			print(list)
+		
 		#check if cunningList is totally empty, if so make null
 		empty = True #assume empty
 		for santa in cunningLists[newFamily][:]:
 			if santa.iden.name != "null":
 				empty = False
+		"""
 		
-		#if list is empty, delete it
-		if empty == True:
-			cunningLists[newFamily] = None
+		
 		
 	#end while loop
 
