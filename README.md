@@ -12,3 +12,7 @@ Author: Christos Cunning
 The flask server can run locally using the following command:
 
 FLASK_APP="app.py" flask run --host=0.0.0.0
+
+#This is the simulation branch
+simply run simulate_xmas.py or whatever it is from the commandline
+and it will randomize lists until in finds one with the least errors
