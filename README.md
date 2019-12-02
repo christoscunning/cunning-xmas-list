@@ -13,12 +13,12 @@ The flask server can run locally using the following command:
 
 FLASK_APP="app.py" flask run --host=0.0.0.0
 
-#Deployment
+# Deployment
 run the following commands in ~/cunning-xmas-site/
--activate venv
+ - activate venv
 	source flask/bin/activate
--start uwsgi server on tcp port 3033
--specify main py file for site and main module name
+ - start uwsgi server on tcp port 3033
+ - specify main py file for site and main module name
 	uwsgi --socket 0.0.0.0:3033 -w santasite:app
 	
 	
