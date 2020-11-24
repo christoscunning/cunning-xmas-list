@@ -10,7 +10,7 @@
 
 import csv
 import sqlite3 as sql
-import users_db_functions as userdbf
+from . import users_db_functions as userdbf
 DB_NAME = 'users.db'
 
 # returns a list of the names of all the users
