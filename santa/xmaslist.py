@@ -13,7 +13,9 @@
 
 import copy
 import random
-import santa_db_functions as santadb
+# in python3 it is important to specify this module is from the current dir
+# for relative imports
+from . import santa_db_functions as santadb
 
 ### CLASSES ###
 

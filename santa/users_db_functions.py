@@ -11,8 +11,8 @@
 #    family_id is 1,2,3,4,5 depending on what family they are in
 
 import sqlite3 as sql
-import create_user_db as createdb
-import auth
+from . import create_user_db as createdb
+from . import auth
 DB_NAME = 'users.db'
 
 
