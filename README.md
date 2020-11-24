@@ -1,6 +1,6 @@
 # cunning-xmas-list
 
-Web application to create a secret santa list for the 
+Web application to create a secret santa list for the
 cunning family christmas gift exchange.
 
 Uses a python backend and flask for the frontend.
@@ -16,7 +16,7 @@ Criteria for Cunning Gift Exchange:
 
 Todo:
  - better UI to view the santa assignments
- - Implement a wishlist for each user that can be viewed somewhere 
+ - Implement a wishlist for each user that can be viewed somewhere
  - registration system
 
 
@@ -25,9 +25,20 @@ The flask server can run locally using the following command:
 
 FLASK_APP="app.py" flask run --host=0.0.0.0
 
-make sure to enable to virtual enviroment first using
+# Deployment
+run the following commands in ~/cunning-xmas-site/
+ - activate venv
+ source flask/bin/activate
+ - start uwsgi server on tcp port 3033
+ - specify main py file for site and main module name
+uwsgi --socket 0.0.0.0:3033 -w santasite:app
 
-# Uses
-Checkout branches simulate and deployment for the two current uses of the xmas-list program.
- - simulate branch is for the xmas-list program repeatedly to find the optimal secret-santa list.
- - deployment branch is for serving the website over the internet using uwsgi and nginx as a reverse proxy.
+
+nginx should run by default or just run
+	sudo service nginx restart
+to ensure changes take effect
+
+TO start in a screen session:
+ssh into your remote box. type screen Then start the process you want.
+Press Ctrl-A then Ctrl-D. This will detach your screen session but leave your processes running. You can now log out of the remote box.
+If you want to come back later, log on again and type screen -r This will resume your screen session, and you can see the output of your process.

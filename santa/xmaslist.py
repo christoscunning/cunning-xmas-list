@@ -116,7 +116,7 @@ class SantaList:
 
 #function wrapper for all the code that was in this file so we can return the masterlist
 #loads all users from database, then returns a smart shuffled list.
-def xmasShuffle(seed = 0):
+def xmasShuffle(seed = 46):
 	random.seed(seed)
 	
 	#get names from database
