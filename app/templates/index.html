@@ -4,15 +4,23 @@
 
 {% block content %}
 
-	{% if user %}
-	<h1>Hello, {{ user.username }}!</h1>
+	{% if user.loggedIn %}
+		<h1>Hello, {{ user.username }}!</h1>
+		
 	{% else %}
-	<h1>Welcome to the cunning secret santa system.</h1>
-	<p>Log in below</p>
+		<h1>Welcome to the cunning secret santa system.</h1>
+		<h4>Log in above</h4>
+		
 	{% endif %}
-
-	{% for santa in slist %}
-	<div><p>{{ santa }} is buying for: <b>{{ slist[santa] }}</b></p></div>
-	{% endfor %}
+	
+	{% if user.loggedIn %}
+		{% for santa in slist %}
+		<div><p>{{ santa }} is buying for: <b>{{ slist[santa] }}</b></p></div>
+		{% endfor %}
+	
+	{% else %}
+		<p>Log in to view secret santa list</p>
+		
+	{% endif %}
 
 {% endblock %}

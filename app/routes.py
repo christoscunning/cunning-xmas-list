@@ -10,11 +10,13 @@ from santa import xmaslist
 #main landing page
 @app.route("/")
 def index():
-    username = None
+    user = {}
+    user['loggedIn'] = False
     if 'user_id' in session:
         username = userdb.findUserByID(session['user_id'])[2]
-    user = {'username': username}
-
+        user['username'] = username
+        user['loggedIn'] = True
+    
     #slist.append("Name":"GivingTo")
     masterlist = xmaslist.xmasShuffle(46)
     slist = masterlist.toDictionary()
@@ -41,7 +43,7 @@ def login():
         if auth.verify_password(stored_hashed_password, d_password):
             #success, redirect to home page
             flash('Login succesful for user {}, remember_me={}'.format(d_username, d_remember_me))
-            #set current user
+            #set current user id in session
             session['user_id'] = userdb.findUserByUsername(d_username)[0]
             return redirect(url_for('index'))
         else:
@@ -58,3 +60,11 @@ def logout():
     session.pop('user_id', None)
     return redirect(url_for('index'))
 
+
+#profiles
+@app.route('/profiles')
+def profiles():
+    #get dict of all users
+	
+    
+	return render_template('profile.html', title='Profiles', users=users)
