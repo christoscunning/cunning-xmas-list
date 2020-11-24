@@ -1,4 +1,5 @@
 /flask/
+/venv/
 
 *.pyc
 *.db
