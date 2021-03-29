@@ -6,3 +6,4 @@
 *.py.swp
 
 secret.txt
+git_access_token.txt

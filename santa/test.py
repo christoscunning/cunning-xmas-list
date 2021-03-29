@@ -10,8 +10,8 @@ filename = '/home/pi/cunning-xmas-site/santa/names.txt'
 
 #userdb.deleteAllUsers()
 
-createdb.createDatabase()
-santadb.loadNamesFromCSV(filename)
+#createdb.createDatabase()
+#santadb.loadNamesFromCSV(filename)
 #userdb.printDB()
 #shuffle = xl.xmasShuffle(46)
 #shuffle.printList()
